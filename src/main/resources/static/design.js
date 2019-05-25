@@ -56,5 +56,16 @@ function validateTextArea() {
 	}
 }
 
+function email() {
+	var regex = /^.+@[a-z]+\.(com||net)$/;
+	var email = document.getElementsByName("email")[0].value; 
+	if (regex.test(email)) {
+		return true; 
+	} else {
+		alert("Error: Invalid email"); 
+		return false; 
+	}
+}
+
 
 }
