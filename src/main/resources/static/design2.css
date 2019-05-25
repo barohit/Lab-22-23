@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body {
+	background-color: black;
+	color: white;
+}
+
+h2 {
+	text-align: center; 
+	font-family: "Times New Roman";
+	color: #A7562A;
+}
+
+fieldset {
+	border-style:dashed;
+}
+
+#coffee {
+	border-color:Blue;
+}
+
+#identificationinfo {
+	border-color:Green;
+}
+
+#password {
+	border-color:Red;
+}
+
+#pass1 {
+	background: #000000;
+	color: Green; 
+}
+
+#pass2 {
+	background: #000000;
+	color: Blue; 
+}
+
+#conf {
+	font-style: italic;
+}
+}
