@@ -5,13 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="design2.css">
 </head>
 <body>
-	<%
-		String name = request.getParameter("firstname"); 
-		out.print("Congrats " + name + "you have registered"); 
-	
-	%>
+	<p> Sorry, your search turned up no results </p>
+	<a href="/"> Go Back </a>
 </body>
 </html>

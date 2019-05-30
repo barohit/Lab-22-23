@@ -14,30 +14,30 @@
 		<fieldset id="identificationinfo">
 			First Name <input type="text" name="firstname"> <br /><br />
 			Last Name <input type="text" name="lastname"> <br /><br />
-			Email <input type="email" name="email"> <br /><br />
-			Phone Number <input type="number" name="phonenumber"> <br /><br />
+			Email <input type="text" name="email"> <br /><br />
+			Phone Number <input type="text" name="phoneNumber"> <br /><br />
 		</fieldset>
 		<fieldset id="password">
-			Password <input type="password" name="pass" id="pass1"> <br /><br />
+			Password <input type="text" name="password" id="pass1"> <br /><br />
 			<span id="conf"> Confirm Password </span> <input type="password" name="passconfirm" id="pass2"> <br /><br /> 
 		</fieldset>
 		<fieldset id="coffee">
-			Favorite Coffee Style <select name="select">
-				<option value="Latte" id="latte"> Latte </option>
-				<option value="Cappuccino" id="cappuccino"> Cappuccino  </option>
-				<option value="expresso" id="expresso"> Expresso </option>
+			Favorite Coffee Style <select name="favoriteCoffee">
+				<option value="Latte"> Latte </option>
+				<option value="Cappuccino"> Cappuccino  </option>
+				<option value="Expresso"> Expresso </option>
 			</select> <br /> <br />
 			<br /> <br />
 			Preferred flavors: 
 			<br /> 
-			Vanilla <input type="checkbox" value="Vanilla" name="flavor"> Chocolate <input type="checkbox" value="Chocolate" name="flavor"> Hazelnut <input type="checkbox" value="Hazelnut" name="flavor">  <br /> <br />
+			Vanilla <input type="checkbox" value="Vanilla" name="preferredFlavors"> Chocolate <input type="checkbox" value="Chocolate" name="preferredFlavors"> Hazelnut <input type="checkbox" value="Hazelnut" name="preferredFlavors">  <br /> <br />
 			Favorite Major Chain: <br />
-			Starbucks <input type="radio" value="Starbucks" name="chain"> Bigby <input type="radio" value="Bigby" name="chain"> Caribou <input type="radio" value="Caribou" name="chain">
+			Starbucks <input type="radio" value="Starbucks" name="favoriteMajorChain"> Bigby <input type="radio" value="Bigby" name="favoriteMajorChain"> Caribou <input type="radio" value="Caribou" name="favoriteMajorChain">
 			<br  /> <br />
 		</fieldset>
 		Tell us why you want to join! 
 		<br />
-		<textarea id="txt" name="reason"> Enter here </textarea> <br />
+		<textarea id="txt" name="joinReasons"> Enter here </textarea> <br />
 		<input type="submit" value="Register"> 
 
 	</form>

@@ -5,6 +5,7 @@ package co.grandcircus.Coffee.Shop.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,13 +15,30 @@ import org.springframework.web.servlet.ModelAndView;
 public class CoffeeController {
 	
 	List<Item> items = new ArrayList<Item>(); 
-	CoffeeDao cd = new CoffeeDao(); 
-	int hazelnutLatteCount = 0; 
-	int vanillaLatteCount = 0; 
+	
+	@Autowired
+	CoffeeDao cd; 
+	 
+	
+	@RequestMapping("search")
+	public ModelAndView find(@RequestParam("searchname") String name) {
+		
+		List<Item> l  = cd.findItem(name); 
+			return new ModelAndView("result", "items", l);
+	}
+		
 	
 	@RequestMapping("/")
-	public ModelAndView mvGiver() {
-		return new ModelAndView("Index");
+	 public ModelAndView mvGiver() {
+	
+		items = cd.findAllItems(); 
+		List<Item> hazelLoc = cd.findLoc("hazelnut latte");  
+		List <Item> vanillaLoc = cd.findLoc("vanilla latte");
+		ModelAndView mv = new ModelAndView("Index"); 
+		mv.addObject("items", items); 
+		mv.addObject("hazelnutlatte", hazelLoc); 
+		mv.addObject("vanillalatte", vanillaLoc);
+		return mv; 
 	}
 	
 	@RequestMapping("/userRegistration")
@@ -28,31 +46,19 @@ public class CoffeeController {
 		return new ModelAndView("userRegistration");
 	}
 	
+//	@RequestMapping("/resp")
+//	public ModelAndView mvGiver3(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("pass") String password, @RequestParam("email") String email, @RequestParam("phonenumber") String phoneNumber) {
+//		User user = new User(firstname, lastname, email, password, phoneNumber); 
+//		cd.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getPhoneNumber()); 
+//		return new ModelAndView("Response"); 
+//	}
+	
 	@RequestMapping("/resp")
-	public ModelAndView mvGiver3(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("pass") String password, @RequestParam("email") String email, @RequestParam("phonenumber") String phoneNumber) {
-		cd.addUser(firstname, lastname, email, password, phoneNumber); 
+	public ModelAndView mvGiver3(User user) { 
+		cd.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getPhoneNumber(), user.getFavoriteCoffee(), user.getPreferredFlavors(), user.getFavoriteMajorChain(), user.getJoinReasons()); 
 		return new ModelAndView("Response"); 
 	}
 	
-	@RequestMapping("/result")
-	public ModelAndView order(@RequestParam("item") String item) {
-		int quant = 0; 
-		String description = ""; 
-		double price = 0.0; 
-		if (item.equals("hazelnut latte")) {
-			hazelnutLatteCount++; 
-			quant = hazelnutLatteCount;
-			description = "hazelnut flavored latte";
-			price = 2.99; 
-		} else if (item.contentEquals("vanillaLatteCount")) {
-			quant = vanillaLatteCount; 
-			description = "vanilla flavored latte"; 
-			vanillaLatteCount++; 
-			price = 6.99;
-		}
-		
-		cd.addItem(item, price, description, quant);
-		return new ModelAndView("result", "item", item);
-	}
+	
 
 }

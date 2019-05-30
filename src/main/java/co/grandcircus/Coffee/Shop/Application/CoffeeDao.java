@@ -17,24 +17,22 @@ public class CoffeeDao {
 		return jdbcTemplate.query("SELECT * FROM items", new BeanPropertyRowMapper<Item>(Item.class));
 	}
 	
-	public int addItem(String name, double price, String description, int quantity) {
-		String addQuery = "insert into items(name, price, description, quantity) values (?, ?, ?, ?)";
-		return jdbcTemplate.update(addQuery, name, price, description, quantity); 
+	public List<Item> findItem(String name) {
+		return jdbcTemplate.query("SELECT * FROM CoffeeShopDB.items WHERE name = '" + name + "'", new BeanPropertyRowMapper<Item>(Item.class)); 
 	}
 	
-	public int updateItem(String name, String price, String description, int itemID, int quantity) {
-		String updateQuery = "UPDATE TABLE items SET name = '?', price='?', description='?' quantity='?' WHERE itemID = '?'"; 
-		return jdbcTemplate.update(updateQuery, name, price, description, quantity, itemID); 
-		
+	public List<Item> findLoc(String name) {
+		List<Item> l = jdbcTemplate.query("SELECT * FROM CoffeeShopDB.items WHERE name = '" + name + "'", new BeanPropertyRowMapper<Item>(Item.class));
+		return l;
 	}
 	
 	public List<User> findAllUsers() {
 		return jdbcTemplate.query("SELECT * FROM users", new BeanPropertyRowMapper<User>(User.class)); 
 	}
 	
-	public int addUser(String firstname, String lastname, String email, String password, String phoneNumber) {
-		String addQuery = "insert into users(firstname, lastname, email, password, phonenumber) values (?,?,?,?,?);";
-		return jdbcTemplate.update(addQuery, firstname, lastname, email, password, phoneNumber); 
+	public int addUser(String firstname, String lastname, String email, String password, String phoneNumber, String favoriteCoffee, String preferredFlavors, String favoriteMajorChain, String joinReasons) {
+		String addQuery = "INSERT INTO users(firstname, lastname, email, password, phonenumber, favoriteCoffee, preferredFlavors, favoriteMajorChain, joinReasons) values (?,?,?,?,?,?,?,?,?);";
+		return jdbcTemplate.update(addQuery, firstname, lastname, email, password, phoneNumber, favoriteCoffee, preferredFlavors, favoriteMajorChain, joinReasons); 
 	}
 }
 

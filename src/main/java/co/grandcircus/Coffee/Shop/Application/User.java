@@ -5,12 +5,19 @@ public class User {
 	private String lastname; 
 	private String email; 
 	private String password; 
-	private int phoneNumber; 
+	private String phoneNumber; 
 	private String favoriteCoffee; 
 	private String preferredFlavors; 
 	private String favoriteMajorChain; 
 	private String joinReasons;
 	
+	public User (String fn, String ln, String em, String pw, String pn) {
+		firstname = fn; 
+		lastname = ln; 
+		email = em; 
+		password = pw; 
+		phoneNumber = pn; 
+	}
 	public String getFirstname() {
 		return firstname;
 	}
@@ -35,10 +42,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getFavoriteCoffee() {
