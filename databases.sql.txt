@@ -1,0 +1,18 @@
+CREATE database CoffeeShopDB;
+USE CoffeeShopDB;
+CREATE TABLE users(firstname varchar(30) NOT NULL, lastname
+varchar(50) NOT NULL, email varchar(20) NOT NULL, phonenumber
+int NULL, password varchar(30) NOT NULL, favoriteCoffee 
+varchar(20) NULL, preferredFlavors varchar(40) NULL, FavoriteMajorChain
+varchar(30) NULL, reasonForJoining varchar(1000) NULL, userID int NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY(userID))Engine=InnoDB;
+
+CREATE TABLE items(name varchar(20) NOT NULL, description varchar(100) NULL,
+quantity int NOT NULL, price int NOT NULL, itemID int NOT NULL 
+AUTO_INCREMENT, PRIMARY KEY(itemID))Engine=InnoDB;
+
+USE CoffeeShopDB; 
+INSERT INTO items(name, description, quantity, price, itemID) Values ('hazelnute latte', 
+'latte with hazelnut flavor', 3, 4.99, 1), ('vanilla latte', 'vanilla flavored latte', 2, 6,99, 2);
+
+
