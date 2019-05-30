@@ -10,7 +10,7 @@
 <body>
 	<h2> Please fill the form to register! </h2>
 	<br />
-	<form method="post" action="Response.html" onsubmit="return validate()"> 
+	<form method="post" action="resp" onsubmit="return validate()"> 
 		<fieldset id="identificationinfo">
 			First Name <input type="text" name="firstname"> <br /><br />
 			Last Name <input type="text" name="lastname"> <br /><br />
@@ -30,14 +30,14 @@
 			<br /> <br />
 			Preferred flavors: 
 			<br /> 
-			Vanilla <input type="checkbox" value="Vanilla"> Chocolate <input type="checkbox" value="Chocolate"> Hazelnut <input type="checkbox" value="Hazelnut">  <br /> <br />
+			Vanilla <input type="checkbox" value="Vanilla" name="flavor"> Chocolate <input type="checkbox" value="Chocolate" name="flavor"> Hazelnut <input type="checkbox" value="Hazelnut" name="flavor">  <br /> <br />
 			Favorite Major Chain: <br />
-			Starbucks: <input type="radio"> Bigby <input type="radio"> Caribou <input type="radio">
+			Starbucks <input type="radio" value="Starbucks" name="chain"> Bigby <input type="radio" value="Bigby" name="chain"> Caribou <input type="radio" value="Caribou" name="chain">
 			<br  /> <br />
 		</fieldset>
 		Tell us why you want to join! 
 		<br />
-		<textarea id="txt"> Enter here </textarea> <br />
+		<textarea id="txt" name="reason"> Enter here </textarea> <br />
 		<input type="submit" value="Register"> 
 
 	</form>
