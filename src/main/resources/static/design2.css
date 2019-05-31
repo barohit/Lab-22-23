@@ -37,6 +37,21 @@ fieldset {
 	color: Blue; 
 }
 
+table {
+	text-align: center;
+}
+td, th {
+	border-style: dashed;
+	border-width: 5px; 
+	border-color: Green; 
+}
+}
+
 #conf {
 	font-style: italic;
+}
+
+a {
+	color: cyan;
+}
 }

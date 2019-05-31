@@ -42,23 +42,54 @@ public class CoffeeController {
 	}
 	
 	@RequestMapping("/userRegistration")
-	public ModelAndView mvGiver2() {
+	public ModelAndView registrationForm() {
 		return new ModelAndView("userRegistration");
 	}
 	
-//	@RequestMapping("/resp")
-//	public ModelAndView mvGiver3(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("pass") String password, @RequestParam("email") String email, @RequestParam("phonenumber") String phoneNumber) {
-//		User user = new User(firstname, lastname, email, password, phoneNumber); 
-//		cd.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getPhoneNumber()); 
-//		return new ModelAndView("Response"); 
-//	}
 	
 	@RequestMapping("/resp")
-	public ModelAndView mvGiver3(User user) { 
+	public ModelAndView addUser(User user) { 
 		cd.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getPhoneNumber(), user.getFavoriteCoffee(), user.getPreferredFlavors(), user.getFavoriteMajorChain(), user.getJoinReasons()); 
 		return new ModelAndView("Response"); 
 	}
 	
+	@RequestMapping("/admin")
+	public ModelAndView getallItems() {
+		List<Item> l = cd.findAllItems();
+		return new ModelAndView("Adminform", "items", l);
+	}
+
+	@RequestMapping("/update")
+	public ModelAndView editItem(@RequestParam("item") String item) {
+		return new ModelAndView("editpage", "item", item);
+	}
+
+	@RequestMapping("/returntoadmin")
+	public ModelAndView editItem2(@RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("price") Double price, @RequestParam("quantity") Integer quantity, @RequestParam("itemID") Integer itemID)  {
+		cd.updateItem(name, description, price, quantity, itemID);
+		List<Item> l = cd.findAllItems(); 
+		return new ModelAndView("Adminform", "items", l);
+	}
+	
+	@RequestMapping("/delete")
+	public ModelAndView deleteItem(@RequestParam("item") Integer item) {
+		cd.deleteItem(item); 
+		List<Item> l = cd.findAllItems(); 
+		return new ModelAndView("Adminform", "items", l);
+	}
+	
+	@RequestMapping("/addnew")
+	public ModelAndView addItem( ) {
+		return new ModelAndView("addpage"); 
+	}
+	
+	@RequestMapping("/additem")
+	public ModelAndView addItem2(@RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("price") Double price, @RequestParam("quantity") Integer quantity)  {
+		cd.addItem(name, description, price, quantity);
+		List<Item> l = cd.findAllItems(); 
+		return new ModelAndView("Adminform", "items", l);
+	}
+}
 	
 
-}
+

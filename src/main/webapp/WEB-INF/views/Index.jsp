@@ -42,6 +42,7 @@
 		<c:forEach var="i" items="${vanillalatte}">
 		<img src="${i.imglocation}">
 		</c:forEach>
+		<a href="admin"> Admin Form</a>
 	</body>
 
 </html>

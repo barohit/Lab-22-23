@@ -6,6 +6,7 @@ public class Item {
 	private Double price;
 	private Integer quantity; 
 	private String imglocation; 
+	private Integer itemID; 
 	
 	public String getName() {
 		return name;
@@ -36,6 +37,13 @@ public class Item {
 	}
 	public void setImglocation(String imglocation) {
 		this.imglocation = imglocation;
+	}
+	
+	public Integer getItemID() {
+		return itemID;
+	}
+	public void setItemID(Integer itemID) {
+		this.itemID = itemID;
 	} 
 
 }
